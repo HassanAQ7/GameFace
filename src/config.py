@@ -1,0 +1,16 @@
+from pydantic import BaseSettings, SettingsConfigDict
+
+
+class Config(BaseSettings):
+    RAWG_API_KEY: str
+    AWS_ACCESS_KEY: str
+    AWS_SECRET_ACCESS_KEY: str
+    AWS_REGION: str
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        extra="ignore"
+    )
+
+
+
+settings = Config()
