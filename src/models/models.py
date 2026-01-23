@@ -7,7 +7,7 @@ class EmotionResult(BaseModel):
     emotion: str
 
 
-class GameRecommendations(BaseModel):
+class GameRecommendation(BaseModel):
     game_id: int = Field(alias="id")
     name: str
     slug: str
@@ -29,7 +29,7 @@ class AnalyzeResponse(BaseModel):
     session_id: str
     emotion: EmotionResult
     all_emotions: List[EmotionResult]
-    recommendations: List[GameRecommendations]
+    recommendations: List[GameRecommendation]
     timestamp: datetime
 
 
