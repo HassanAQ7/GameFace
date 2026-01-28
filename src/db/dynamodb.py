@@ -6,7 +6,7 @@ from botocore.exceptions import ClientError
 from src.config import settings
 from typing import List
 from datetime import datetime
-from src.models.models import EmotionResult, GameRecommendation, AnalyzeResponse, RecommendationResponse
+from src.models.models import EmotionResult, GameRecommendation, RecommendationResponse
 
 
 class DynamoDBService:
@@ -41,3 +41,6 @@ class DynamoDBService:
             print(e)
         else:
             return recent_recommendations['Items']
+
+
+dynamodb_service = DynamoDBService()

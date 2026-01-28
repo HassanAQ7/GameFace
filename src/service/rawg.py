@@ -84,3 +84,6 @@ class RawgService:
             games_recommendation.append(recommendation)
 
         return games_recommendation
+
+
+rawg_service = RawgService()
