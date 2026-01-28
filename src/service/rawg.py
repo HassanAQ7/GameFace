@@ -1,3 +1,5 @@
+import logging
+
 import httpx
 from src.models.models import GameRecommendation
 from src.config import settings
@@ -42,8 +44,9 @@ API_URL = "https://api.rawg.io/api/games"
 
 
 class RawgService:
-    async def get_recommendations(self, emotion: str, limit: int = 10):
+    async def get_recommendations(self, emotion: str, limit: int = 10) -> List[GameRecommendation]:
         try:
+            logging.info(f"Getting games from RAWG for {emotion}")
             async with httpx.AsyncClient() as client:
                 response = await client.get(API_URL, params={
                     "key": settings.API_KEY,
@@ -54,11 +57,12 @@ class RawgService:
 
                 response.raise_for_status()
                 data = response.json()
+            logging.info("Successfully retrieved games from RAWG")
             return self.parse_response(data)
 
 
         except Exception as e:
-            raise e
+            logging.error("Could not get games from RAWG", e)
 
 
     def parse_response(self, data: dict) -> List[GameRecommendation]:
