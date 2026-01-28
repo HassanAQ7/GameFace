@@ -7,6 +7,7 @@ class Config(BaseSettings):
     AWS_SECRET_ACCESS_KEY: str
     AWS_REGION: str
     AWS_PROFILE_NAME:str
+    DYNAMO_DB_TABLE_NAME: str
     model_config = SettingsConfigDict(
         env_file=".env",
         extra="ignore"

@@ -28,7 +28,6 @@ class AnalyzeResponse(BaseModel):
     recommendation_id: str
     session_id: str
     emotion: EmotionResult
-    all_emotions: List[EmotionResult]
     recommendations: List[GameRecommendation]
     timestamp: datetime
 
