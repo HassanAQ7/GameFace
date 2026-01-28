@@ -24,7 +24,7 @@ class GameRecommendation(BaseModel):
 
 
 
-class AnalyzeResponse(BaseModel):
+class RecommendationResponse(BaseModel):
     recommendation_id: str
     session_id: str
     emotion: EmotionResult
