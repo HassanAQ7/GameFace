@@ -21,8 +21,8 @@ class DynamoDBService:
             recommendation_item = {
                 'session_id': recommendation.session_id,
                 'recommendation_id': recommendation.recommendation_id,
-                'emotion': recommendation.emotion,
-                'recommendations': recommendation.recommendations,
+                'emotion': recommendation.emotion.model_dump(),
+                'recommendations': [rec.model_dump() for rec in recommendation.recommendations],
                 'timestamp': int(recommendation.timestamp.timestamp() * 1000)
             }
             self.table.put_item(Item=recommendation_item)
