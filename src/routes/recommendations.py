@@ -28,7 +28,7 @@ async def get_recommendations(
         recommendations=games_recommendations,
         timestamp=datetime.now()
     )
-    dynamodb.put_recommendation(recommendation.session_id, recommendation)
+    dynamodb.put_recommendation(recommendation)
     return recommendation
 
 

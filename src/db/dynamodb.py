@@ -15,7 +15,7 @@ class DynamoDBService:
                                        aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY)
         self.table = self.dynamodb.Table(settings.DYNAMO_DB_TABLE_NAME)
 
-    def put_recommendation(self, session_id: str, recommendation: RecommendationResponse):
+    def put_recommendation(self, recommendation: RecommendationResponse):
         try:
             logging.info("Attempting to put recommendation item in dynamodb")
             recommendation_item = {
