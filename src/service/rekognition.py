@@ -1,3 +1,5 @@
+import logging
+
 from src.config import settings
 import boto3
 
@@ -14,8 +16,10 @@ class RekognitionService:
         )
 
         client = session.client('rekognition')
+        logging.info("Getting user emotions from Rekognition")
         response = client.detect_faces(Image={"Bytes": image}, Attributes=["ALL"])
         detected_emotion = response['FaceDetails']['Emotions'][0]
+        logging.info(f"Rekognition detected {detected_emotion['Type']} with confidence {detected_emotion['Confidence']}")
         emotion_result = EmotionResult(
             confidence=detected_emotion['Confidence'],
             emotion=detected_emotion['Type']
