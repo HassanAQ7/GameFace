@@ -1,13 +1,8 @@
 from fastapi import FastAPI
-
-app = FastAPI()
-
-
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
+from src.routes.recommendations import recommendations_router
+app = FastAPI(
+    name="GameFace",
+    version="v1",
+    description="backend for GameFace project"
+)
+app.include_router(recommendations_router, prefix=f"/api/v1/recommendations", tags=["recommendations"])
