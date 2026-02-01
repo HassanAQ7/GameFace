@@ -33,7 +33,7 @@ async def get_recommendations(
 
 
 @recommendations_router.get("/get-recent-recommendations", response_model=List[RecommendationResponse])
-async def get_recent_recommendations(session_id: str, dynamodb: dynamodb_service = Depends(lambda: dynamodb_service)):
+async def get_recent_recommendations(session_id: str, dynamodb: DynamoDBService = Depends(lambda: dynamodb_service)):
     recommendations = dynamodb.get_recent_recommendations(session_id)
     recent_recommendations = []
     for recommendation_item in recommendations:

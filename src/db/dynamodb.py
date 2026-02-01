@@ -30,6 +30,7 @@ class DynamoDBService:
         except ClientError as e:
             logging.error("Could not put recommendation in dynamodb table",
                           e.response['Error']['Message'])
+            raise
 
     def get_recent_recommendations(self, session_id: str, limit: int = 10):
         try:
@@ -41,6 +42,7 @@ class DynamoDBService:
             )
         except ClientError as e:
             logging.error("Could not get recent recommendations", e.response['Error']['Message'])
+            raise
         else:
             logging.info("Successfully retrieved recommendations from dynamodb", recent_recommendations['Items'])
             return recent_recommendations['Items']

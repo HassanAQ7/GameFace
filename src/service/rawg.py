@@ -49,7 +49,7 @@ class RawgService:
             logging.info(f"Getting games from RAWG for {emotion}")
             async with httpx.AsyncClient() as client:
                 response = await client.get(API_URL, params={
-                    "key": settings.API_KEY,
+                    "key": settings.RAWG_API_KEY,
                     "genres": EMOTION_CONFIG[emotion]["genres"],
                     "tags": EMOTION_CONFIG[emotion]["tags"],
                     "page_size": limit,
@@ -63,6 +63,7 @@ class RawgService:
 
         except Exception as e:
             logging.error("Could not get games from RAWG", e)
+            raise
 
 
     def parse_response(self, data: dict) -> List[GameRecommendation]:
