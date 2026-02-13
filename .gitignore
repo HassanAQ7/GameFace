@@ -40,6 +40,9 @@ dist-ssr/
 # Frontend TypeScript
 *.tsbuildinfo
 
+# TanStack Router (auto-generated)
+.tanstack/
+
 # IDE
 .idea/
 .vscode/
