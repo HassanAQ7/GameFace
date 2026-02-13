@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Optional, List, Dict, Any
 from datetime import datetime
 
@@ -8,6 +8,8 @@ class EmotionResult(BaseModel):
 
 
 class GameRecommendation(BaseModel):
+    model_config = ConfigDict(populate_by_name=True)
+
     game_id: int = Field(alias="id")
     name: str
     slug: str

@@ -42,7 +42,7 @@ async def get_recent_recommendations(session_id: str, dynamodb: DynamoDBService 
             recommendation_id=recommendation_item['recommendation_id'],
             emotion=recommendation_item['emotion'],
             recommendations=recommendation_item['recommendations'],
-            timestamp=datetime.fromtimestamp(recommendation_item['timestamp']/1000)
+            timestamp=datetime.fromtimestamp(float(recommendation_item['timestamp']) / 1000)
         )
         recent_recommendations.append(recommendation_response)
 

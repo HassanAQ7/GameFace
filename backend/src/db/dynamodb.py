@@ -1,4 +1,6 @@
+import json
 import logging
+from decimal import Decimal
 
 import boto3
 from boto3.dynamodb.conditions import Key
@@ -25,6 +27,7 @@ class DynamoDBService:
                 'recommendations': [rec.model_dump() for rec in recommendation.recommendations],
                 'timestamp': int(recommendation.timestamp.timestamp() * 1000)
             }
+            recommendation_item = json.loads(json.dumps(recommendation_item), parse_float=Decimal)
             self.table.put_item(Item=recommendation_item)
             logging.info("Successfully put recommendation in dynamodb table", recommendation_item)
         except ClientError as e:
