@@ -42,6 +42,7 @@ dist-ssr/
 
 # TanStack Router (auto-generated)
 .tanstack/
+routeTree.gen.ts
 
 # IDE
 .idea/

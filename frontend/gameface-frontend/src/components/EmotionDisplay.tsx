@@ -23,7 +23,7 @@ function getGradient(emotion: string): string {
 
 export default function EmotionDisplay({ emotion }: EmotionDisplayProps) {
   const gradient = getGradient(emotion.emotion);
-  const percentage = Math.round(emotion.confidence * 100);
+  const percentage = Math.round(emotion.confidence);
 
   return (
     <div className="flex flex-col items-center gap-5 rounded-2xl border border-gray-700 bg-[#2a2a2a] px-10 py-8">
