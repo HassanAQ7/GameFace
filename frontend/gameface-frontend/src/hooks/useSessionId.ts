@@ -9,7 +9,7 @@ export function useSessionId() {
             localStorage.setItem('session-id', id)
         }
 
-        setSessionId(sessionId)
+        setSessionId(id)
     }, []);
 
     return sessionId;
