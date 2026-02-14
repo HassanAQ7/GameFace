@@ -1,6 +1,6 @@
 import { type EmotionResult, type GameRecommendation, type RecommendationResponse } from "./types";
 
-const API_BASE_URL = 'http://localhost:8000/api/v1';
+const API_BASE_URL = import.meta.env.API_BASE_URL
 
 export const gameRecommendationAPI = {
   getRecommendations: async (

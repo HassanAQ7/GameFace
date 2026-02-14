@@ -44,18 +44,18 @@ function HomePage() {
 
   if (!results) {
     return (
-      <div className="mx-auto max-w-2xl px-4 py-12">
+      <div className="mx-auto max-w-2xl px-4 py-16">
         <ImageCapture onImageCapture={handleImageCapture} isLoading={loading} />
 
         {loading && (
           <div className="mt-8 flex flex-col items-center">
-            <div className="h-10 w-10 animate-spin rounded-full border-2 border-gray-600 border-t-orange-500" />
-            <p className="mt-4 text-sm text-gray-400">Analyzing...</p>
+            <div className="h-10 w-10 animate-spin rounded-full border-2 border-gray-700 border-t-orange-500" />
+            <p className="mt-4 text-sm text-gray-500">Analyzing your emotion...</p>
           </div>
         )}
 
         {error && (
-          <div className="mt-6 rounded border border-red-500/30 bg-red-900/20 p-4 text-red-400">
+          <div className="mt-6 rounded-lg border border-red-500/30 bg-red-900/20 p-4 text-sm text-red-400">
             {error}
           </div>
         )}
@@ -64,7 +64,7 @@ function HomePage() {
   }
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-12">
+    <div className="animate-fade-in mx-auto max-w-5xl px-4 py-12">
       <div className="flex flex-col items-center gap-8">
         <EmotionDisplay emotion={results.emotion} />
         <GameList games={results.recommendations} />
@@ -72,7 +72,7 @@ function HomePage() {
         <button
           type="button"
           onClick={handleReset}
-          className="rounded border border-gray-600 bg-transparent px-6 py-3 text-sm text-gray-300 transition hover:bg-gray-800"
+          className="rounded-lg border border-gray-600 bg-transparent px-6 py-3 text-sm font-medium text-gray-300 transition hover:border-orange-500/50 hover:text-orange-400"
         >
           Try Another Image
         </button>

@@ -47,19 +47,19 @@ function HistoryPage() {
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-12">
-      <h1 className="mb-8 text-center text-3xl font-bold text-white">
+      <h1 className="mb-8 text-center text-3xl font-bold tracking-tight text-white">
         Your Recommendation History
       </h1>
 
       {loading && (
         <div className="flex flex-col items-center py-16">
-          <div className="h-10 w-10 animate-spin rounded-full border-2 border-gray-600 border-t-orange-500" />
-          <p className="mt-4 text-sm text-gray-400">Loading history...</p>
+          <div className="h-10 w-10 animate-spin rounded-full border-2 border-gray-700 border-t-orange-500" />
+          <p className="mt-4 text-sm text-gray-500">Loading history...</p>
         </div>
       )}
 
       {error && (
-        <div className="rounded border border-red-500/30 bg-red-900/20 p-4 text-red-400">
+        <div className="rounded-lg border border-red-500/30 bg-red-900/20 p-4 text-sm text-red-400">
           {error}
         </div>
       )}
@@ -76,7 +76,7 @@ function HistoryPage() {
           {recommendations.map((rec) => (
             <div
               key={rec.recommendation_id}
-              className="rounded-2xl border border-gray-700 bg-[#2a2a2a] p-6"
+              className="animate-fade-in rounded-2xl border border-gray-700/80 bg-[#1e1e1e] p-6"
             >
               <p className="mb-5 text-sm text-gray-500">
                 {formatTimestamp(rec.timestamp)}

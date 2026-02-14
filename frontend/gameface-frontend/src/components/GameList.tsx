@@ -15,7 +15,7 @@ export default function GameList({ games }: GameListProps) {
             href={`https://rawg.io/games/${game.slug}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative overflow-hidden rounded-xl border border-gray-700 bg-[#2a2a2a] transition hover:border-orange-500"
+            className="group relative overflow-hidden rounded-xl border border-gray-700/80 bg-[#1e1e1e] transition duration-300 hover:border-orange-500/60 hover:shadow-[0_0_24px_rgba(249,115,22,0.12)]"
           >
             <div className="relative h-44 w-full overflow-hidden">
               <img
@@ -24,7 +24,7 @@ export default function GameList({ games }: GameListProps) {
                 className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
               />
               <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition group-hover:opacity-100">
-                <HiOutlineArrowTopRightOnSquare className="h-8 w-8 text-white" />
+                <HiOutlineArrowTopRightOnSquare className="h-8 w-8 text-white drop-shadow-lg" />
               </div>
             </div>
 
@@ -33,7 +33,7 @@ export default function GameList({ games }: GameListProps) {
 
               <div className="flex items-center gap-3 text-sm">
                 {game.rating != null && (
-                  <span className="text-yellow-400">★ {game.rating.toFixed(1)}</span>
+                  <span className="text-orange-400">★ {game.rating.toFixed(1)}</span>
                 )}
                 {game.metacritic != null && (
                   <span className="rounded bg-green-700/60 px-1.5 py-0.5 text-xs font-bold text-green-300">
@@ -46,7 +46,7 @@ export default function GameList({ games }: GameListProps) {
                 {game.genres.slice(0, 2).map((genre) => (
                   <span
                     key={genre.id}
-                    className="rounded-full bg-gray-700 px-2.5 py-0.5 text-xs text-gray-300"
+                    className="rounded-full bg-white/5 px-2.5 py-0.5 text-xs text-gray-400"
                   >
                     {genre.name}
                   </span>
@@ -63,7 +63,7 @@ export default function GameList({ games }: GameListProps) {
           href="https://rawg.io"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-500 underline transition hover:text-white"
+          className="text-gray-500 underline transition hover:text-orange-400"
         >
           RAWG
         </a>

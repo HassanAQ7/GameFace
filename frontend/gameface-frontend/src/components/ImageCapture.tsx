@@ -86,17 +86,22 @@ export default function ImageCapture({ onImageCapture, isLoading }: ImageCapture
 
   if (mode === "select") {
     return (
-      <div className="flex flex-col items-center gap-6 p-8">
-        <h2 className="text-2xl font-semibold">How would you like to provide an image?</h2>
+      <div className="flex flex-col items-center gap-8 p-8">
+        <div className="text-center">
+          <h2 className="text-3xl font-bold tracking-tight">
+            Show us your <span className="text-orange-400">face</span>
+          </h2>
+          <p className="mt-2 text-sm text-gray-500">We'll recommend games based on your mood</p>
+        </div>
 
-        <div className="flex gap-4">
+        <div className="flex gap-5">
           <button
             type="button"
             onClick={() => setMode("upload")}
             disabled={isLoading}
-            className="flex flex-col items-center gap-2 rounded-xl border-2 border-dashed border-gray-500 px-8 py-6 transition hover:border-indigo-400 hover:bg-indigo-400/10 disabled:cursor-not-allowed disabled:opacity-50"
+            className="group flex flex-col items-center gap-3 rounded-2xl border border-gray-700 bg-[#1e1e1e] px-10 py-8 transition hover:border-orange-500/60 hover:shadow-[0_0_20px_rgba(249,115,22,0.1)] disabled:cursor-not-allowed disabled:opacity-50"
           >
-            <HiOutlineArrowUpTray className="h-10 w-10" />
+            <HiOutlineArrowUpTray className="h-10 w-10 text-gray-400 transition group-hover:text-orange-400" />
             <span className="text-lg font-medium">Upload Image</span>
           </button>
 
@@ -104,9 +109,9 @@ export default function ImageCapture({ onImageCapture, isLoading }: ImageCapture
             type="button"
             onClick={() => setMode("webcam")}
             disabled={isLoading}
-            className="flex flex-col items-center gap-2 rounded-xl border-2 border-dashed border-gray-500 px-8 py-6 transition hover:border-indigo-400 hover:bg-indigo-400/10 disabled:cursor-not-allowed disabled:opacity-50"
+            className="group flex flex-col items-center gap-3 rounded-2xl border border-gray-700 bg-[#1e1e1e] px-10 py-8 transition hover:border-orange-500/60 hover:shadow-[0_0_20px_rgba(249,115,22,0.1)] disabled:cursor-not-allowed disabled:opacity-50"
           >
-            <HiOutlineCamera className="h-10 w-10" />
+            <HiOutlineCamera className="h-10 w-10 text-gray-400 transition group-hover:text-orange-400" />
             <span className="text-lg font-medium">Use Webcam</span>
           </button>
         </div>
@@ -117,7 +122,7 @@ export default function ImageCapture({ onImageCapture, isLoading }: ImageCapture
   if (mode === "webcam") {
     return (
       <div className="flex flex-col items-center gap-4 p-6">
-        <div className="overflow-hidden rounded-xl border border-gray-600">
+        <div className="overflow-hidden rounded-2xl border border-gray-700 shadow-lg">
           <Webcam
             ref={webcamRef}
             audio={false}
@@ -132,7 +137,7 @@ export default function ImageCapture({ onImageCapture, isLoading }: ImageCapture
             type="button"
             onClick={handleCapture}
             disabled={isLoading}
-            className="rounded-lg bg-indigo-500 px-6 py-2 font-medium text-white transition hover:bg-indigo-600 disabled:cursor-not-allowed disabled:opacity-50"
+            className="rounded-lg bg-orange-500 px-6 py-2.5 font-medium text-white transition hover:bg-orange-600 hover:shadow-[0_0_16px_rgba(249,115,22,0.3)] disabled:cursor-not-allowed disabled:opacity-50"
           >
             {isLoading ? "Processing…" : "Capture Photo"}
           </button>
@@ -141,7 +146,7 @@ export default function ImageCapture({ onImageCapture, isLoading }: ImageCapture
             type="button"
             onClick={handleCancel}
             disabled={isLoading}
-            className="rounded-lg border border-gray-500 px-6 py-2 font-medium transition hover:bg-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
+            className="rounded-lg border border-gray-600 px-6 py-2.5 font-medium text-gray-300 transition hover:bg-white/5 disabled:cursor-not-allowed disabled:opacity-50"
           >
             Cancel
           </button>
@@ -162,18 +167,18 @@ export default function ImageCapture({ onImageCapture, isLoading }: ImageCapture
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") fileInputRef.current?.click();
         }}
-        className={`flex w-full max-w-md cursor-pointer flex-col items-center gap-3 rounded-xl border-2 border-dashed p-12 transition ${
+        className={`flex w-full max-w-md cursor-pointer flex-col items-center gap-3 rounded-2xl border-2 border-dashed p-12 transition ${
           isDragging
-            ? "border-indigo-400 bg-indigo-400/10"
-            : "border-gray-500 hover:border-indigo-400 hover:bg-indigo-400/5"
+            ? "border-orange-400 bg-orange-400/10"
+            : "border-gray-600 hover:border-orange-400/60 hover:bg-orange-400/5"
         } ${isLoading ? "pointer-events-none opacity-50" : ""}`}
       >
-        <HiOutlinePhoto className="h-12 w-12 text-gray-400" />
+        <HiOutlinePhoto className="h-12 w-12 text-gray-500" />
 
         <p className="text-lg font-medium">
           {isDragging ? "Drop your image here" : "Drag & drop an image or click to browse"}
         </p>
-        <p className="text-sm text-gray-400">Supports JPG, PNG, GIF, WebP</p>
+        <p className="text-sm text-gray-500">Supports JPG, PNG, GIF, WebP</p>
       </div>
 
       <input
@@ -188,7 +193,7 @@ export default function ImageCapture({ onImageCapture, isLoading }: ImageCapture
         type="button"
         onClick={handleCancel}
         disabled={isLoading}
-        className="rounded-lg border border-gray-500 px-6 py-2 font-medium transition hover:bg-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
+        className="rounded-lg border border-gray-600 px-6 py-2.5 font-medium text-gray-300 transition hover:bg-white/5 disabled:cursor-not-allowed disabled:opacity-50"
       >
         Cancel
       </button>
