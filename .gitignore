@@ -71,6 +71,11 @@ logs/
 # AWS credentials (safety precaution)
 .aws/
 
+# Lambda deployment artifacts
+lambda_package/
+lambda_deploy.zip
+requirements.txt
+
 # Temporary files
 *.tmp
 *.temp

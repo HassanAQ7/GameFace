@@ -12,9 +12,9 @@ from src.models.models import RecommendationResponse
 class DynamoDBService:
     def __init__(self):
         self.dynamodb = boto3.resource('dynamodb',
-                                       region_name=settings.AWS_REGION,
-                                       aws_access_key_id=settings.AWS_ACCESS_KEY,
-                                       aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY)
+                                       region_name=settings.REGION,
+                                       aws_access_key_id=settings.ACCESS_KEY,
+                                       aws_secret_access_key=settings.SECRET_ACCESS_KEY)
         self.table = self.dynamodb.Table(settings.DYNAMO_DB_TABLE_NAME)
 
     def put_recommendation(self, recommendation: RecommendationResponse):

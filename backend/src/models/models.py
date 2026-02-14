@@ -13,7 +13,7 @@ class GameRecommendation(BaseModel):
     game_id: int = Field(alias="id")
     name: str
     slug: str
-    released: str
+    released: Optional[str]
     background_image: str
     rating: Optional[float]
     ratings_count: Optional[int]

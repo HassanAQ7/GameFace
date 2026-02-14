@@ -44,7 +44,7 @@ API_URL = "https://api.rawg.io/api/games"
 
 
 class RawgService:
-    async def get_recommendations(self, emotion: str, limit: int = 10) -> List[GameRecommendation]:
+    async def get_recommendations(self, emotion: str, limit: int = 45) -> List[GameRecommendation]:
         try:
             logging.info(f"Getting games from RAWG for {emotion}")
             async with httpx.AsyncClient() as client:
